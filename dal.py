@@ -128,7 +128,8 @@ class SQLA:
             ).filter_by(
                 secret=secret
             ).update(
-                {"phone": phone, "secret": new_secret}
+                phone=phone,
+                secret=new_secret
             )
             session.commit()
             return result
@@ -140,7 +141,7 @@ class SQLA:
             ).filter_by(
                 uid=uid
             ).update(
-                {"user": user_data}
+                user=json.dumps(user_data, ensure_ascii=False)
             )
             session.commit()
             return result
